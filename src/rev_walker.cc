@@ -157,7 +157,7 @@ Handle<Value> RevWalker::Push(const Arguments& args) {
 	}
 }
 
-int RevWalker::EIO_Push(eio_req *req) {
+void RevWalker::EIO_Push(eio_req *req) {
 	walker_request *reqData = static_cast<walker_request*>(req->data);
 
 	git_commit *commit;
@@ -182,7 +182,6 @@ int RevWalker::EIO_Push(eio_req *req) {
 				git_commit_id(commit));
 		reqData->walker->repo_->unlockRepository();
 	}
-	return 0;
 }
 
 int RevWalker::EIO_AfterPush(eio_req *req) {
@@ -263,7 +262,7 @@ Handle<Value> RevWalker::Hide(const Arguments& args) {
 	}
 }
 
-int RevWalker::EIO_Hide(eio_req *req) {
+void RevWalker::EIO_Hide(eio_req *req) {
 	walker_request *reqData = static_cast<walker_request*>(req->data);
 
 	git_commit *commit;
@@ -288,7 +287,6 @@ int RevWalker::EIO_Hide(eio_req *req) {
 				git_commit_id(commit));
 		reqData->walker->repo_->unlockRepository();
 	}
-	return 0;
 }
 
 int RevWalker::EIO_AfterHide(eio_req *req) {
@@ -361,7 +359,7 @@ Handle<Value> RevWalker::Next(const Arguments& args) {
 	}
 }
 
-int RevWalker::EIO_Next(eio_req *req) {
+void RevWalker::EIO_Next(eio_req *req) {
 	walker_request *reqData = static_cast<walker_request*>(req->data);
 
 	git_oid id;
@@ -379,7 +377,6 @@ int RevWalker::EIO_Next(eio_req *req) {
 		}
 	}
 
-	return 0;
 }
 
 int RevWalker::EIO_AfterNext(eio_req *req) {
@@ -447,7 +444,7 @@ Handle<Value> RevWalker::Sort(const Arguments& args) {
 	}
 }
 
-int RevWalker::EIO_Sort(eio_req *req) {
+void RevWalker::EIO_Sort(eio_req *req) {
 	sort_request *reqData = static_cast<sort_request*>(req->data);
 
 	reqData->walker->repo_->lockRepository();
@@ -455,7 +452,6 @@ int RevWalker::EIO_Sort(eio_req *req) {
 	reqData->error = GIT_SUCCESS;
 	reqData->walker->repo_->unlockRepository();
 
-	return 0;
 }
 
 int RevWalker::EIO_AfterSort(eio_req *req) {
@@ -508,14 +504,12 @@ Handle<Value> RevWalker::Reset(const Arguments& args) {
 	}
 }
 
-int RevWalker::EIO_Reset(eio_req *req) {
+void RevWalker::EIO_Reset(eio_req *req) {
 	reset_request *reqData = static_cast<reset_request*>(req->data);
 
 	reqData->walker->repo_->lockRepository();
 	git_revwalk_reset(reqData->walker->walker_);
 	reqData->walker->repo_->unlockRepository();
-
-	return 0;
 }
 
 int RevWalker::EIO_AfterReset(eio_req *req) {
