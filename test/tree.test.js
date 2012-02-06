@@ -27,6 +27,7 @@
 	gitteh = require("gitteh"),
 	path = require("path"),
 	fixtureValues = require("./fixtures/values"),
+	util = require('util'),
 	helpers = require("./fixtures/helpers.js");
 
 var DIRECTORY_ATTRIBUTE = helpers.fromOctal(40000);
@@ -54,7 +55,8 @@ var createTreeTestContext = function(topic, treeFixture) {
 			},
 			
 			"has correct number of entries": function(tree) {
-				assert.length(tree.entries, entriesFixture.length);
+				// assert.length(tree.entries, entriesFixture.length);
+				assert.equal(tree.entries.length, entriesFixture.length);
 			}
 		};
 		
