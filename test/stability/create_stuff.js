@@ -1,7 +1,7 @@
 // Open a new repository, and create a shiteload of random objects.
 // TODO: actually save them once we have save asynchronous.
 
-var gitteh = require("../../build/default/gitteh"),
+var gitteh = require("../../build/Release/gitteh.node"),
 	path = require("path"),
 	async = require("async"),
 	fs = require("fs");

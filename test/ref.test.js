@@ -235,37 +235,37 @@ vows.describe("References").addBatch({
 		}
 	},
 
-	"Creating a ref then deleting it *asynchronously*": {
-		topic: function() {
-			var t = this;
-			var ref = testRepo.createOidReference("refs/heads/asyncdeleteme", testRepo.HEAD_COMMIT);
-			t.context.ref = ref;
-			ref.delete(this.callback);
-		},
+	// "Creating a ref then deleting it *asynchronously*": {
+	// 	topic: function() {
+	// 		var t = this;
+	// 		var ref = testRepo.createOidReference("refs/heads/asyncdeleteme", testRepo.HEAD_COMMIT);
+	// 		t.context.ref = ref;
+	// 		ref.delete(this.callback);
+	// 	},
 		
-		"runs fine": function(result) {
-			assert.isTrue(result);
-		},
+	// 	"runs fine": function(result) {
+	// 		assert.isTrue(result);
+	// 	},
 		
-		"ref is completely inoperable now": function() {
-			var ref = this.context.ref;
-			assert.throws(function() {
-				ref.rename("refs/heads/oidtest");
-			}, Error);
+	// 	"ref is completely inoperable now": function() {
+	// 		var ref = this.context.ref;
+	// 		assert.throws(function() {
+	// 			ref.rename("refs/heads/oidtest");
+	// 		}, Error);
 			
-			assert.throws(function() {
-				ref.resolve();
-			});
+	// 		assert.throws(function() {
+	// 			ref.resolve();
+	// 		});
 			
-			assert.throws(function() {
-				ref.delete();
-			});
+	// 		assert.throws(function() {
+	// 			ref.delete();
+	// 		});
 			
-			assert.throws(function() {
-				ref.setTarget(fixtureValues.FIRST_COMMIT.id);
-			});
-		}
-	},
+	// 		assert.throws(function() {
+	// 			ref.setTarget(fixtureValues.FIRST_COMMIT.id);
+	// 		});
+	// 	}
+	// },
 
 	"Creating a ref then deleting it *synchronously*": {
 		topic: function() {

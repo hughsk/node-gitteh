@@ -1,7 +1,7 @@
 // This test makes sure we can retrieve the same resource both async and sync
 // simultaneously.
 
-var gitteh = require("../../build/default/gitteh"),
+var gitteh = require("../../build/Release/gitteh.node"),
 	path = require("path"),
 	async = require("async"),
 	profiler = require("profiler");

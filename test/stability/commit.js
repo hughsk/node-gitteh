@@ -1,7 +1,7 @@
 // Step 1, open a repository, step 2, populate it with 1000 commits in an async
 // manner. Step 3, iterate over all of these commits and mess with them.
 
-var gitteh = require("../../build/default/gitteh"),
+var gitteh = require("../../build/Release/gitteh.node"),
 	path = require("path"),
 	async = require("async"),
 	fs = require("fs");

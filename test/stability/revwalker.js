@@ -1,7 +1,7 @@
 // Create a repo with a hundred commits, walk through history in both directions
 // simultaneously a few thousand times.
 
-var gitteh = require("../../build/default/gitteh"),
+var gitteh = require("../../build/Release/gitteh.node"),
 	path = require("path"),
 	async = require("async"),
 	fs = require("fs");

@@ -1,7 +1,7 @@
 // Create a commit, then create a few thousand tags pointing to that commit
 // asynchronously.
 
-var gitteh = require("../../build/default/gitteh"),
+var gitteh = require("../../build/Release/gitteh.node"),
 	path = require("path"),
 	async = require("async"),
 	fs = require("fs");
